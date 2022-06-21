@@ -5,8 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class US_06 {
-    public US_06() {
+public class Gulhanim {
+    public Gulhanim() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

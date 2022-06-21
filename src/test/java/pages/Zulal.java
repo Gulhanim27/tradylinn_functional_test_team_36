@@ -5,8 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class US_03 {
-    public US_03() {
+public class Zulal {
+    public Zulal() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

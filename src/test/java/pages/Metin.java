@@ -5,8 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class US_08 {
-    public US_08() {
+public class Metin {
+    public Metin() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

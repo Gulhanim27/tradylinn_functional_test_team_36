@@ -2,7 +2,7 @@ package tests.tradylinn;
 
 import org.testng.annotations.Test;
 
-public class US_01 {
+public class Gulhanim {
     @Test
     public void test01(){
 

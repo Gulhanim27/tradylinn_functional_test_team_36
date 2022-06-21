@@ -2,7 +2,7 @@ package tests.tradylinn;
 
 import org.testng.annotations.Test;
 
-public class US_06 {
+public class Samet {
     @Test
     public void test01(){
 

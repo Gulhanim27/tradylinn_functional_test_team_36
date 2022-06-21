@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.TestNG_Practices" />
+        <module name="com.TestHG_Practices" />
       </profile>
     </annotationProcessing>
   </component>

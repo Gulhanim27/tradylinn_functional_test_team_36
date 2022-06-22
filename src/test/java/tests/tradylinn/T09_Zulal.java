@@ -2,7 +2,7 @@ package tests.tradylinn;
 
 import org.testng.annotations.Test;
 
-public class Metin {
+public class T09_Zulal {
     @Test
     public void test01(){
 

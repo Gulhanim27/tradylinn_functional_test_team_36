@@ -18,9 +18,10 @@ public class T01_Aydin {
         LoginTest.loginTest();
 
         //TC_0002_Orders da Browse products a gidilmeli
+        //TC_0002_Orders da Browse products a gidilmeligidilmeli
         // 5 urun secilmeli ve Secilen ürünler tek tek sepete aktarılmalı.
 
-        urunEkleme();
+              urunEkleme();
 
            // tc 3_Sepete ve ordan checkout a gidilmeli
 
@@ -55,6 +56,7 @@ public class T01_Aydin {
 
         //1_odeme  tiklanmlali
         us_03Page.odeme.click();
+
         faturaBilgilerininGirilmesi();
 
         //14_ pay the door sec

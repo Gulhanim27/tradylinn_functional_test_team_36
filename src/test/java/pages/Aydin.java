@@ -33,11 +33,11 @@ public class Aydin {
 
 
 
-    @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
-   public WebElement hesabimButton;
+   // @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
+  // public WebElement hesabimButton;
 
-  //  @FindBy(xpath="//li[@id='menu-item-1074']")
-  //  public WebElement hesabimButton;
+    @FindBy(xpath="//li[@id='menu-item-1074']")
+    public WebElement hesabimButton;
 
     @FindBy(xpath="//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
     public WebElement siparislerButton;

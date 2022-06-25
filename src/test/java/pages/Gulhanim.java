@@ -12,4 +12,5 @@ public class Gulhanim {
 
     @FindBy(xpath="locater")
     public WebElement locaterName;
+
 }

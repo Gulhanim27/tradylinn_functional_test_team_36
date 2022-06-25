@@ -5,6 +5,6 @@ import org.testng.annotations.Test;
 public class T07_Gulhanim {
     @Test
     public void test01(){
-
+        System.out.println("hello world");
     }
 }

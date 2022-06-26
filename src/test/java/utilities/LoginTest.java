@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pages.Aydin;
 
 
-public class LoginTest {
+public class LoginTest extends TestBase {
 
     public static void loginTest() throws InterruptedException {
 

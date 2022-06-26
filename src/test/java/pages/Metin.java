@@ -12,4 +12,42 @@ public class Metin {
 
     @FindBy(xpath="locater")
     public WebElement locaterName;
+
+
+    @FindBy(xpath = "(//a[text()='Hesabım'])[1]")
+    public WebElement hesabimButonu;
+
+    @FindBy(id = "username")
+    public WebElement userName;
+
+    @FindBy(id = "password")
+    public WebElement password;
+
+    @FindBy(xpath = "//*[@name='login']")
+    public WebElement girisYapButonu;
+
+    @FindBy(xpath = "//*[text()='Store Manager']")
+    public WebElement storeManager;
+
+    @FindBy(xpath = "(//span[@class='text'])[4]")
+    public WebElement urunButonu;
+
+    @FindBy(id = "add_new_product_dashboard")
+    public WebElement yeniEkleButonu;
+
+    @FindBy(id = "wcfm_products_manage_form_attribute_head")
+    public WebElement attributesButonu;
+
+    @FindBy(xpath = "//div[@id='attributes']/div[2]")
+    public WebElement colorCheckBox;
+
+    @FindBy(id = "attributes_is_active_1")
+    public WebElement colorSelectAll;
+
+    @FindBy(xpath = "//div[@id='attributes']/div[3]")
+    public WebElement sizeCheckBox;
+
+    @FindBy(id = "attributes_is_active_2")
+    public WebElement sizeSelectAll;
+
 }

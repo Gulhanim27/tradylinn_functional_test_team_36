@@ -13,6 +13,7 @@ public class Esra {
     @FindBy(xpath="locater")
     public WebElement locaterName;
 
+
     @FindBy(xpath="//span[contains(text(),'Giriş Yap')]")
     public WebElement girisYap;
 
@@ -72,7 +73,6 @@ public class Esra {
 
 
     //=========================US_15====================================//
-
 
 
 

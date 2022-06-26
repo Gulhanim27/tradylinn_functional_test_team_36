@@ -2,9 +2,9 @@ package tests.tradylinn;
 
 import org.testng.annotations.Test;
 
-public class Metin {
+public class T07_Gulhanim {
     @Test
     public void test01(){
-
+        System.out.println("hello world");
     }
 }

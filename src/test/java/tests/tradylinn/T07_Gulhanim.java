@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
 import pages.Gulhanim;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.LoginTest;
+
 import utilities.TestBase;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class T07_Gulhanim extends LoginTest {
+public class T07_Gulhanim {
     @Test
     public void test01() {
 

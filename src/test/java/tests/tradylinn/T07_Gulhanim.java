@@ -1,5 +1,12 @@
 package tests.tradylinn;
 
+
+import org.testng.annotations.Test;
+
+public class T07_Gulhanim {
+    @Test
+    public void test01(){
+
 import org.apache.commons.math3.analysis.function.Add;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,6 +25,7 @@ import java.nio.file.Paths;
 public class T07_Gulhanim {
     @Test
     public void test01() {
+
 
     }
 }

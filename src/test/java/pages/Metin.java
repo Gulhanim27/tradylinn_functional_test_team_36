@@ -13,6 +13,7 @@ public class Metin {
     @FindBy(xpath="locater")
     public WebElement locaterName;
 
+
     @FindBy(xpath = "(//a[text()='Hesabım'])[1]")
     public WebElement hesabimButonu;
 

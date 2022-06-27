@@ -7,7 +7,8 @@ import utilities.Driver;
 
 
 
-   
+  public class Aydin{
+
 
 // loketleri buraya koy
 

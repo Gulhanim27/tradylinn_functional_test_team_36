@@ -5,141 +5,187 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-
-
-   
 public class Aydin {
-// loketleri buraya koy
 
-
-    public Aydin() {
-        PageFactory.initElements(Driver.getDriver(), this);
+    public Aydin(){
+        PageFactory.initElements(Driver.getDriver(),this);
     }
 
     //Tc1
 
-    @FindBy(xpath = "//a[@class='login inline-type']")
+    @FindBy(xpath="//a[@class='login inline-type']")
     public WebElement loginButonu;
 
-    @FindBy(xpath = "//input[@id='username']")
+    @FindBy(xpath="//input[@id='username']")
     public WebElement emailTextBox;
 
-    @FindBy(xpath = "//input[@id='password']")
+    @FindBy(xpath="//input[@id='password']")
     public WebElement passwordTextBox;
 
-    @FindBy(xpath = "//button[@value='Giriş Yap']")
+    @FindBy(xpath="//button[@value='Giriş Yap']")
     public WebElement girisButonu;
 
     // TC2
 
 
-    // @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
-    // public WebElement hesabimButton;
 
-    @FindBy(xpath = "//li[@id='menu-item-1074']")
+    //  @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
+    //public WebElement hesabimButton;
+
+    @FindBy(xpath="//li[@id='menu-item-1074']")
     public WebElement hesabimButton;
 
-    @FindBy(xpath = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
+    @FindBy(xpath="//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
     public WebElement siparislerButton;
 
-    @FindBy(xpath = "//a[@class='btn btn-dark btn-rounded btn-icon-right continue-shopping mb-4 mt-6']")
+    @FindBy(xpath="//a[@class='btn btn-dark btn-rounded btn-icon-right continue-shopping mb-4 mt-6']")
     public WebElement alisveriseDevamEtButonu;
 
-    @FindBy(xpath = "//input[@placeholder='Ürün arama']")
+    @FindBy(xpath="//input[@placeholder='Ürün arama']")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//button[@name='add-to-cart']")
+    @FindBy(xpath="//button[@name='add-to-cart']")
     public WebElement sepeteEkleButonu;
 
 
-    @FindBy(xpath = "(//figure[@class='product-media'])[1]")
+
+    @FindBy(xpath="(//figure[@class='product-media'])[1]")
     public WebElement masa;
 
-    @FindBy(xpath = "(//figure[@class='product-media'])[2]")
+    @FindBy(xpath="(//figure[@class='product-media'])[3]")
     public WebElement bebek;
 
-    @FindBy(xpath = "(//figure[@class='product-media'])[3]")
+    @FindBy(xpath="(//figure[@class='product-media'])[3]")
     public WebElement cicek;
 
-    @FindBy(xpath = "(//figure[@class='product-media'])[2]")
-    public WebElement saat;
+    @FindBy(xpath="(//figure[@class='product-media'])[1]")
+    public WebElement laptop;
 
-    @FindBy(xpath = "(//figure[@class='product-media'])[2]")
-    public WebElement vazo;
+    @FindBy(xpath="(//figure[@class='product-media'])[2]")
+    public WebElement kilif;
 
     //TC3
 
 
-    @FindBy(xpath = "//i[@class='w-icon-cart']")
+
+    @FindBy(xpath="//i[@class='w-icon-cart']")
     public WebElement sepetimButonu;
-    @FindBy(xpath = "//a[@class='button wc-forward']")
+    @FindBy(xpath="//a[@class='button wc-forward']")
     public WebElement sepetiGoruntule;
 
-    @FindBy(xpath = "(//span[@class='cart-count'])[1]")
+    @FindBy(xpath="(//span[@class='cart-count'])[1]")
     public WebElement sepetimdekiSayi;
 
 
     //TC4
 
 
-    @FindBy(xpath = "//span[@class='dropdown-wrapper']")
+
+    @FindBy(xpath="//span[@class='dropdown-wrapper']")
     public WebElement ulkeTextBox;
-    @FindBy(xpath = "//li[@id='select2-calc_shipping_country-result-6l3z-TR']")
+    @FindBy(xpath="//li[@id='select2-calc_shipping_country-result-6l3z-TR']")
     public WebElement turkiye;
 
 
-    @FindBy(xpath = "//input[@class='select2-search__field']")
+    @FindBy(xpath="//input[@class='select2-search__field']")
     public WebElement sehirTextBoxSend;
 
-    @FindBy(xpath = "//span[@class='select2-selection select2-selection--single']")
+    @FindBy(xpath="//span[@class='select2-selection select2-selection--single']")
     public WebElement sehirTextBoxTikla;
 
 
-    @FindBy(xpath = "//input[@id='calc_shipping_city']")
+    @FindBy(xpath="//input[@id='calc_shipping_city']")
     public WebElement ilceTextBox;
 
 
-    @FindBy(xpath = "//input[@placeholder='Posta kodu']")
+    @FindBy(xpath="//input[@placeholder='Posta kodu']")
     public WebElement postaKutusu;
 
-    @FindBy(xpath = "//button[@name='calc_shipping']")
+    @FindBy(xpath="//button[@name='calc_shipping']")
     public WebElement fiyatiGuncelle;
 
-    @FindBy(xpath = "//p[@class='woocommerce-shipping-destination']")
+    @FindBy(xpath="//p[@class='woocommerce-shipping-destination']")
     public WebElement gonderimHedefi;
+
 
 
     //Tc 5
 
     //div[@class='wc-proceed-to-checkout']
-    @FindBy(xpath = "//a[@class='button checkout wc-forward']")
+    @FindBy(xpath="//a[@class='button checkout wc-forward']")
     public WebElement odeme;
 
-    @FindBy(xpath = "//input[@id='billing_first_name']")
+    @FindBy(xpath="//input[@id='billing_first_name']")
     public WebElement billingFirstName;
 
 
-    @FindBy(xpath = "//input[@id='payment_method_cod']")
+    @FindBy(xpath="//input[@id='payment_method_cod']")
     public WebElement payAtTheDoor;
 
-    @FindBy(xpath = "//button[@id='place_order']")
+    @FindBy(xpath="//button[@id='place_order']")
     public WebElement siparisiOnayla;
 
 
-    @FindBy(xpath = "(//span[@class='woocommerce-input-wrapper'])[1]")
+    @FindBy(xpath="(//span[@class='woocommerce-input-wrapper'])[1]")
     public WebElement isim;
 
-    @FindBy(xpath = "//input[@id='billing_last_name")
+    @FindBy(xpath="//input[@id='billing_last_name")
     public WebElement soyisim;
 
 
-    @FindBy(xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
+    @FindBy(xpath="//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public WebElement TesekkerYaziElementi;
 
 
-    //  us_04
+
+    // US_04
+
+    @FindBy(xpath = "//input[@title='Miktar']")
+    public WebElement sepettekiUrunMiktariElementi;
+
+
+
+    @FindBy(xpath = "//input[@title='Miktar']")
+    public WebElement sepetEksiButonu;
+
+
+    @FindBy(xpath = "(//button[@class='quantity-plus w-icon-plus'])[1]")
+    public WebElement miktarPlus;
+
+    @FindBy(xpath = "(//button[@class='quantity-minus w-icon-minus'])[1]")
+    public WebElement miktarMinus;
+
+
+
+    @FindBy(xpath = "//th[@class='product-price']")
+    public WebElement fiyatYaziElementi;
+
+
+    @FindBy(xpath = "//th[@class='product-quantity']']")
+    public WebElement miktarYaziElementi;
+
+
+    @FindBy(xpath = "//th[@class='product-subtotal']")
+    public WebElement araToplamYaziElementi;
+
+
+
+    @FindBy(xpath = "//button[@value='Sepeti Yenile']")
+    public WebElement sepetiYenile;
+
+
+
+    @FindBy(xpath = "(//div[@class='quantity-wrapper'])[3]")
+    public WebElement miktarStok;
+
+
+
+
+
+
+
+
+
 
 
 }
-
-

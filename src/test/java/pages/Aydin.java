@@ -5,7 +5,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class Aydin {
+
+
+  public class Aydin{
+
 
 // loketleri buraya koy
 
@@ -142,6 +145,7 @@ public class Aydin {
 
 
                               //  us_04
+
 
 
 

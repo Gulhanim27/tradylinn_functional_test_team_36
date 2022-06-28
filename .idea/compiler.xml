@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="tradylinn_functional_test_team_36" />
         <module name="com.TestNG_Practices" />
         <module name="com.TestHG_Practices" />
       </profile>

@@ -73,6 +73,19 @@ public class Esra {
 
     //=========================US_15====================================//
 
+    @FindBy(xpath = "//div[@id='coupons_manage_limit']")
+    public WebElement limitlemeButon;
+
+    @FindBy(xpath = "//input[@id='usage_limit']")
+    public WebElement usageLimit;
+
+    @FindBy(xpath = "//input[@id='limit_usage_to_x_items']")
+    public WebElement limittoXitem;
+
+    @FindBy(xpath = "//input[@id='usage_limit_per_user']")
+    public WebElement limitPerUser;
+
+
 
 
 

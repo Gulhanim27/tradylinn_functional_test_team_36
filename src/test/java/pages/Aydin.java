@@ -7,10 +7,6 @@ import utilities.Driver;
 
 public class Aydin {
 
-// loketleri buraya koy
-
-
-
     public Aydin(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -33,11 +29,11 @@ public class Aydin {
 
 
 
-    @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
-   public WebElement hesabimButton;
+    //  @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
+    //public WebElement hesabimButton;
 
-  //  @FindBy(xpath="//li[@id='menu-item-1074']")
-  //  public WebElement hesabimButton;
+    @FindBy(xpath="//li[@id='menu-item-1074']")
+    public WebElement hesabimButton;
 
     @FindBy(xpath="//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
     public WebElement siparislerButton;
@@ -56,17 +52,17 @@ public class Aydin {
     @FindBy(xpath="(//figure[@class='product-media'])[1]")
     public WebElement masa;
 
-    @FindBy(xpath="(//figure[@class='product-media'])[2]")
+    @FindBy(xpath="(//figure[@class='product-media'])[3]")
     public WebElement bebek;
 
     @FindBy(xpath="(//figure[@class='product-media'])[3]")
     public WebElement cicek;
 
-    @FindBy(xpath="(//figure[@class='product-media'])[2]")
-    public WebElement saat;
+    @FindBy(xpath="(//figure[@class='product-media'])[1]")
+    public WebElement laptop;
 
     @FindBy(xpath="(//figure[@class='product-media'])[2]")
-    public WebElement vazo;
+    public WebElement kilif;
 
     //TC3
 
@@ -141,7 +137,46 @@ public class Aydin {
     public WebElement TesekkerYaziElementi;
 
 
-                              //  us_04
+
+    // US_04
+
+    @FindBy(xpath = "//input[@title='Miktar']")
+    public WebElement sepettekiUrunMiktariElementi;
+
+
+
+    @FindBy(xpath = "//input[@title='Miktar']")
+    public WebElement sepetEksiButonu;
+
+
+    @FindBy(xpath = "(//button[@class='quantity-plus w-icon-plus'])[1]")
+    public WebElement miktarPlus;
+
+    @FindBy(xpath = "(//button[@class='quantity-minus w-icon-minus'])[1]")
+    public WebElement miktarMinus;
+
+
+
+    @FindBy(xpath = "//th[@class='product-price']")
+    public WebElement fiyatYaziElementi;
+
+
+    @FindBy(xpath = "//th[@class='product-quantity']']")
+    public WebElement miktarYaziElementi;
+
+
+    @FindBy(xpath = "//th[@class='product-subtotal']")
+    public WebElement araToplamYaziElementi;
+
+
+
+    @FindBy(xpath = "//button[@value='Sepeti Yenile']")
+    public WebElement sepetiYenile;
+
+
+
+    @FindBy(xpath = "(//div[@class='quantity-wrapper'])[3]")
+    public WebElement miktarStok;
 
 
 

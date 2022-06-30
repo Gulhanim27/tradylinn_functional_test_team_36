@@ -8,17 +8,17 @@ import pages.Samet;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 
-
-public class T04_Samet {
+public class T04_Samet extends TestBaseRapor {
     @Test
     public void test01() throws InterruptedException {
-
+    extentTest=extentReports.createTest("Samet Class","odeme islemleri");
         Samet samet=new Samet();
 
         Driver.getDriver().get(ConfigReader.getProperty("tradylinnUrl"));
-
+    extentTest.info("Url e gidildi");
         ReusableMethods.waitForVisibility(samet.loginButonu,30);
         samet.loginButonu.click();
         ReusableMethods.waitForVisibility(samet.emailTextBox,30);

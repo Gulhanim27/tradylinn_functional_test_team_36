@@ -29,11 +29,12 @@ public class Aydin {
 
 
 
-    //  @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
-    //public WebElement hesabimButton;
-
-    @FindBy(xpath="//li[@id='menu-item-1074']")
+    @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
     public WebElement hesabimButton;
+
+    // @FindBy(xpath="//li[@id='menu-item-1074']")
+    // public WebElement hesabimButton;
+
 
     @FindBy(xpath="//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders']")
     public WebElement siparislerButton;
@@ -89,6 +90,10 @@ public class Aydin {
 
     @FindBy(xpath="//input[@class='select2-search__field']")
     public WebElement sehirTextBoxSend;
+
+
+    @FindBy(xpath="//span[@class='select2-selection select2-selection--single']")
+    public WebElement sehirTextBoxKargo;
 
     @FindBy(xpath="//span[@class='select2-selection select2-selection--single']")
     public WebElement sehirTextBoxTikla;
@@ -161,7 +166,7 @@ public class Aydin {
     public WebElement fiyatYaziElementi;
 
 
-    @FindBy(xpath = "//th[@class='product-quantity']']")
+    @FindBy(xpath = "//th[@class='product-quantity']")
     public WebElement miktarYaziElementi;
 
 
@@ -173,14 +178,54 @@ public class Aydin {
     @FindBy(xpath = "//button[@value='Sepeti Yenile']")
     public WebElement sepetiYenile;
 
+    @FindBy(xpath = "//button[@value='Temizle']")
+    public WebElement temizle;
+
 
 
     @FindBy(xpath = "(//div[@class='quantity-wrapper'])[3]")
     public WebElement miktarStok;
 
 
+    @FindBy(xpath = "//button[@name='apply_coupon']")
+    public WebElement kuponElementi;
+
+    //US19
+    @FindBy(xpath = "//a[normalize-space()='Store Manager']")
+    public WebElement storeManagerButton;
 
 
+    @FindBy(xpath = "(//span[@class='text'])[11]")
+    public WebElement takipcilerButton;
+
+    @FindBy(xpath = "//div[@class='wcfm-container wcfm-top-element-container']")
+    public WebElement followersYaziElementi;
+
+    @FindBy(xpath = "//th[@aria-label='Name']")
+    public WebElement nameYaziElementi;
+
+
+    @FindBy(xpath = "//th[@aria-label='E-posta']")
+    public WebElement e_postaYaziElementi;
+
+    @FindBy(xpath = "//th[@aria-label='İşlem']")
+    public WebElement islemYaziElementi;
+
+    @FindBy(xpath = "//span[@data-tip='Delete']")
+    public WebElement deleteElementi;
+
+    @FindBy(xpath = "//div[@id='wcfm-followers_info']")
+    public WebElement takipciSonucElementi;
+
+
+    @FindBy(xpath = "//input[@id='quantity_62bca1957412f']")
+    public WebElement miktarEkle;
+
+    @FindBy(xpath = "//*[text()='9 ']")
+    public WebElement miktarText;
+
+    @FindBy(xpath = "//span[@id='select2-billing_state-container']")
+    public WebElement faturaSehir;
 
 
 

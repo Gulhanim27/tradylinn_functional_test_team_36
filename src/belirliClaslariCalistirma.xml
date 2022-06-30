@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="istenen claslari calistirma">
+    <test name="classlar">
+        <classes>
+            <class name="tests.tradylinn.T07_01_Gulhanim"></class>
+            <class name="tests.tradylinn.T01_Aydin"></class>
+            <class name="tests.tradylinn.T04_Samet"></class>
+        </classes>
+    </test>
+</suite>

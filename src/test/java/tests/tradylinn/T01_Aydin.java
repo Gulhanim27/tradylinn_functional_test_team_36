@@ -3,20 +3,23 @@ package tests.tradylinn;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.Aydin;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.LoginTest;
 
 public class T01_Aydin {
-    pages.Aydin us_03Page=new pages.Aydin();
+    pages.Aydin aydin=new pages.Aydin();
     protected WebDriver driver;
 
     Actions actions=new Actions(Driver.getDriver());
 
     @Test
-    public void us_03_urunSecimi() throws InterruptedException {
-// Tradylinn sayfasina login olma
+    public void test03() throws InterruptedException {
+//Tradylinn sayfasina login olma
         LoginTest.loginTest();
 
         //TC_0002_Orders da Browse products a gidilmeli
@@ -28,248 +31,370 @@ public class T01_Aydin {
         // tc 3_Sepete ve ordan checkout a gidilmeli
 
 //1_ Sepetim sekmesine tikla
-        us_03Page.sepetimButonu.click();
+        aydin.sepetimButonu.click();
 //2_ Sepeti goruntule ye tikla
-        us_03Page.sepetiGoruntule.click();
+        aydin.sepetiGoruntule.click();
 //3-  5 urun oldugunu dogrula
-        String expected="5";
-        String actual=us_03Page.sepetimdekiSayi.getText();
-        Assert.assertEquals(expected,actual);
+        String expected = "5";
+        String actual = aydin.sepetimdekiSayi.getText();
+        Assert.assertEquals(expected, actual);
 
         //TC 4_Tum address bilgileri tam olarak girilmeli
 
         //1_sepetim sekmesine tikla
-        us_03Page.sepetimButonu.click();
+        aydin.sepetimButonu.click();
         //2_ sepetimi goruntule sekmesi tikla
-        us_03Page.sepetiGoruntule.click();
+        aydin.sepetiGoruntule.click();
 
 
         kargoAdresi();
         //7- fiyati guncelleye tikla
-        us_03Page.fiyatiGuncelle.click();
+        aydin.fiyatiGuncelle.click();
+        Thread.sleep(5000);
+
         //8-gonderim hedefinin"04435 sultanbeyli İstanbul, Türkiye." oldugunu dogrula
 
-        String expectedKargoadres="04432 sultanbeyli İstanbul, Türkiye.";
-        String actualKargoadres=us_03Page.gonderimHedefi.getText();
+        String expectedKargoadres = "04432 sultanbeyli İstanbul, Türkiye.";
+        String actualKargoadres = aydin.gonderimHedefi.getText();
         System.out.println(actualKargoadres);
-        Assert.assertEquals(actualKargoadres,expectedKargoadres);
+        Assert.assertEquals(actualKargoadres, expectedKargoadres);
 
 // tc 05 Billing bilgileri tam olarak eklenmeli ve place order diyerek order yapılmalı
 
         //1_odeme  tiklanmlali
-        us_03Page.odeme.click();
+        aydin.odeme.click();
 
         faturaBilgilerininGirilmesi();
 
         //14_ pay the door sec
-        us_03Page.payAtTheDoor.click();
+        aydin.payAtTheDoor.click();
         //15_ siparis onaylama ya tikla
-        us_03Page.siparisiOnayla.click();
+        aydin.siparisiOnayla.click();
         //16-"Teşekkür ederiz. Siparişiniz alınmıştır." yazisini gor
-        String expectedIkon="Teşekkür ederiz. Siparişiniz alınmıştır.";
-        String actualIkon=us_03Page.TesekkerYaziElementi.getText();
+        String expectedIkon = "Teşekkür ederiz. Siparişiniz alınmıştır.";
+        String actualIkon = aydin.TesekkerYaziElementi.getText();
         System.out.println(actualIkon);
-        Assert.assertEquals(actualIkon,expectedIkon);
+        Assert.assertEquals(actualIkon, expectedIkon);
 
         //  benim icin bitmistir:)
 
         driver.close();
-
-    }
-
-
-    @Test()
-    public void us_004_stokISlemleri() throws InterruptedException {
-//TC001
-        //login olmali
-        LoginTest.loginTest();
-        Thread.sleep(3000);
-        urunEkleme();
-        // sepetim butonuna tikla
-        us_03Page.sepetimButonu.click();
-        //sepetimi goruntuleye tikla
-        us_03Page.sepetiGoruntule.click();
-        //eklen urun var mi dogrula
-
-        int sepettekiSayiDegeri = Integer.parseInt(  us_03Page.sepetimdekiSayi.getText());
-        Assert.assertTrue(sepettekiSayiDegeri > 0, "sepetimde urun var ");
-
-        // Fiyat sekmesi var oldugunu test eder
-        Assert.assertTrue(us_03Page.fiyatYaziElementi.isDisplayed());
-        // Miktarsekmesi var oldugunu test eder
-        Thread.sleep(1000);
-        //?       Assert.assertTrue(us_03Page.miktarYaziElementi.isDisplayed());
-        //  Ara Toplam sekmesi var oldugunu test eder
-        Thread.sleep(1000);
-        Assert.assertTrue(us_03Page.araToplamYaziElementi.isDisplayed());
-
-
-
-        //TC 002
-        //1.Urun adedini artirmak icin ( + ) butonuna tiklar
-        int artiButonunaTiklamadanOncekiDeger = Integer.parseInt(us_03Page.sepettekiUrunMiktariElementi.getAttribute("value"));
-        us_03Page.miktarPlus.click();
-        //2.Urun adedinin arttigini test eder
-        int artiButonuTiklandiktanSonrakiDeger = Integer.parseInt(us_03Page.sepettekiUrunMiktariElementi.getAttribute("value"));
-        Assert.assertTrue(artiButonuTiklandiktanSonrakiDeger > artiButonunaTiklamadanOncekiDeger, "Urun artmadi");
-        //3.Urun adedini azaltmak icin ( - ) butonuna tiklar
-        us_03Page.miktarMinus.click();
-        //4. Urun adedinin azaldini  test eder
-        int eksiButonunaTikladiktanSonrakiDeger = Integer.parseInt(us_03Page.sepettekiUrunMiktariElementi.getAttribute("value"));
-        Assert.assertTrue(eksiButonunaTikladiktanSonrakiDeger < artiButonuTiklandiktanSonrakiDeger, "Urun azalmadi");
-
-
-
-        //  TC 003
-        // sepetim butonuna tikla
-        us_03Page.sepetiGoruntule.click();
-        // sepeti goruntuleye tikla
-        us_03Page.sepetiGoruntule.click();
-        // miktardaki artiya plus tikla
-        us_03Page.miktarPlus.click();
-
-        // sepeti yenileye tikla
-
-        int yenilemedenOnce=Integer.parseInt(us_03Page.araToplamYaziElementi.getAttribute("value"));
-        us_03Page.sepetiYenile.click();
-        // ara toplamin arttigini dogrula
-        int yenilemedenSonraki= Integer.parseInt(us_03Page.araToplamYaziElementi.getAttribute("value"));
-        Assert.assertTrue(yenilemedenOnce<yenilemedenSonraki,"Urun toplami artmiyor");
-        // miktardaki artiya stok fazlasi deger gir
-        //ayakkabiururnunun max degeri =45
-        actions.click(us_03Page.miktarStok).sendKeys(Keys.CLEAR).sendKeys("50").perform();
-        us_03Page.sepetiYenile.click();
-        int yenilemedenOnce1=Integer.parseInt(us_03Page.araToplamYaziElementi.getAttribute("value"));
-        us_03Page.sepetiYenile.click();
-        int yenilemedenSonraki1= Integer.parseInt(us_03Page.araToplamYaziElementi.getAttribute("value"));
-
-
-        // hata mesjnini dogrula
-        Assert.assertTrue(yenilemedenOnce1<yenilemedenSonraki1,"stokta halen urun var");
-
-
-
-
-        // tc 004
-
-//        1_ kupon kullan butonunu dogrula
-//        2- Alis verise devam et sekmesininin dogrula
-//        3_gonderim hedegi varmi onu dogrula
-//        4- toplam rakam varmi onu dogrula
-//        5_odeme sayfasina tiklanmali ve bunu dogrula
-
-//        6-Temizle sekmesine tikla
-        //7- sepetiniz suan bos yazisini dogrula
-
-
-
-
-
-
     }
 
     public void faturaBilgilerininGirilmesi(){
-
-
-
         Faker faker = new Faker();
-        WebElement isimkutusu=driver.findElement(By.xpath("//input[@id='billing_first_name']"));
-        actions.click(isimkutusu)
-                .sendKeys(faker.name().firstName())  //2_ ad gir
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.name().lastName())//3_ soyad  gir
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.company().name())//4_firma adi bos birakilabilir
-                .sendKeys(Keys.TAB)//5_ulke adi gir
-                .sendKeys(faker.address().streetAddress())//6_sokak adresi gir
-                .sendKeys(Keys.TAB)//7_apartman ,daire ,oda istege bagli
-                .sendKeys(faker.address().secondaryAddress())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.address().zipCode())//8_posta kod gir
-                .sendKeys(Keys.TAB)
-                .sendKeys("sultanbeyli")//9_ilce / semt gir
-                .sendKeys(Keys.TAB)
-                .sendKeys("istanbul")//10_sehir gir
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.phoneNumber().cellPhone())//11_telefon gir
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.internet().emailAddress())//12_E-posta adresi gir
-                .sendKeys(Keys.TAB)
-                .sendKeys("City: İzmir\n" +
-                        "Phone: 055256565236\n" +
-                        "Address: Türkiye/İzmir/Buca")//13_teslimat adresi gir
-                .perform();
+
+
+
+
+        JavascriptExecutor js2=(JavascriptExecutor) Driver.getDriver();
+        js2.executeScript("arguments[0].scrollIntoView(true);",aydin.isim);
+        js2.executeScript("arguments[0].click()",aydin.isim);
+
+
+        if (aydin.isim.isSelected()) {
+            aydin.isim.click();
+            actions
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.name().firstName())  //2_ ad gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.name().lastName())//3_ soyad  gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.company().name())//4_firma adi bos birakilabilir
+                    .sendKeys(Keys.TAB)//5_ulke adi gir
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.address().streetAddress())//6_sokak adresi gir
+                    .sendKeys(Keys.TAB)//7_apartman ,daire ,oda istege bagli
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.address().secondaryAddress())
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.address().zipCode())//8_posta kod gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys("sultanbeyli")//9_ilce / semt gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.phoneNumber().cellPhone())//11_telefon gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(faker.internet().emailAddress())//12_E-posta adresi gir
+                    .sendKeys(Keys.TAB)
+                    .sendKeys(Keys.CLEAR)
+                    .sendKeys(ConfigReader.getProperty("adres"))//13_teslimat adresi gir
+                    .perform();
+        }
+
+        aydin.sehirTextBoxTikla.click();
+        aydin.sehirTextBoxSend.click();
+        aydin.sehirTextBoxSend.sendKeys("izmir"+Keys.ENTER);
+
+        js2.executeScript("arguments[0].scrollIntoView(true);", aydin.payAtTheDoor);
+        js2.executeScript("arguments[0].click()", aydin.payAtTheDoor);
 
 
 
 
     }
     public void urunEkleme(){
-        us_03Page.hesabimButton.click();
+        aydin.hesabimButton.click();
         //2-siparisler butonuna tikla
-        us_03Page.siparislerButton.click();
-
-
-
+        aydin.siparislerButton.click();
         // sayfayi page down yapma !!!!!!!!!!!!!!!!!!!!!!!!!
 
-        //   JavascriptExecutor js=(JavascriptExecutor)driver;
-        //   WebElement element=driver.findElement(By.xpath("(//i[@class='w-icon-long-arrow-right'])[2]"));
-        //  js.executeScript("arguments[0].scrollIntoView();",element);//elementi buldu
-
-        // alisverislere devam et tikla
-        // alisverislere devam et tikla
-        //   us_03Page.alisveriseDevamEtButonu.click();//tikladik
-
-
-        //3- Urun arama textbox`ina "bebek" yazip enterla
-        us_03Page.searchButton.sendKeys("bebek"+ Keys.ENTER);
-        //4-cikan sonuclardan 2. resme tikla
-        us_03Page.bebek.click();
-        //5- sepete ekle butonuna tikla
-        us_03Page.sepeteEkleButonu.click();
-
-        //6- Urun arama textbox`ina "laptop" yazip enterla
-        us_03Page.searchButton.sendKeys("laptop"+Keys.ENTER);
-        //7-cikan sonuclardan 2. resme tikla
-        us_03Page.laptop.click();
-        //8- sepete ekle butonuna tikla
-        us_03Page.sepeteEkleButonu.click();
 
         //9- Urun arama textbox`ina "kilif" yazip enterla
-        us_03Page.searchButton.sendKeys("kilif"+Keys.ENTER);
+        aydin.searchButton.sendKeys("kilif"+Keys.ENTER);
         //10-cikan sonuclardan 1. resme tikla
-        us_03Page.kilif.click();
+        aydin.kilif.click();
         //11- sepete ekle butonuna tikla
-        us_03Page.sepeteEkleButonu.click();
+        aydin.sepeteEkleButonu.click();
+
+        //3- Urun arama textbox`ina "bebek" yazip enterla
+        aydin.searchButton.sendKeys("bebek"+ Keys.ENTER);
+        //4-cikan sonuclardan 2. resme tikla
+        aydin.bebek.click();
+        //5- sepete ekle butonuna tikla
+        aydin.sepeteEkleButonu.click();
+
+        //6- Urun arama textbox`ina "laptop" yazip enterla
+        aydin.searchButton.sendKeys("laptop"+Keys.ENTER);
+        //7-cikan sonuclardan 2. resme tikla
+        aydin.laptop.click();
+        //8- sepete ekle butonuna tikla
+        aydin.sepeteEkleButonu.click();
+
+
 
         //12- Urun arama textbox`ina "masa" yazip enterla
-        us_03Page.searchButton.sendKeys("masa"+Keys.ENTER);
+        aydin.searchButton.sendKeys("masa"+Keys.ENTER);
         //13-cikan sonuclardan 2. resme tikla
-        us_03Page.masa.click();
+        aydin.masa.click();
         //14- sepete ekle butonuna tikla
-        us_03Page.sepeteEkleButonu.click();
+        aydin.sepeteEkleButonu.click();
 
         //15- Urun arama textbox`ina "cicek" yazip enterla
-        us_03Page.searchButton.sendKeys("cicek"+Keys.ENTER);
+        aydin.searchButton.sendKeys("cicek"+Keys.ENTER);
         //16-cikan sonuclardan 2. resme tikla
-        us_03Page.cicek.click();
+        aydin.cicek.click();
         //17- sepete ekle butonuna tikla
-        us_03Page.sepeteEkleButonu.click();
+        aydin.sepeteEkleButonu.click();
 
     }
-    public void kargoAdresi(){
+    public void kargoAdresi() throws InterruptedException {
         //3_ ulke textbox a "Turkiye" yazi gonder
-        us_03Page.ulkeTextBox.click();
+
+        Select options=new Select(aydin.turkiye);
+        options.selectByIndex(1);
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,200)");
+
+        Thread.sleep(5000);
+        aydin.turkiye.click();
+
         //4_ sehir texbox ina istanbul yazisi gonder
-        us_03Page.sehirTextBoxTikla.click();
-        us_03Page.sehirTextBoxSend.sendKeys("istanbul"+Keys.ENTER);
+
+        aydin.sehirTextBoxTikla.click();
+        aydin.sehirTextBoxSend.sendKeys("istanbul"+Keys.ENTER);
+        //   Select optns1=new Select(aydin.sehirTextBoxKargo);
+        //   optns1.selectByVisibleText("istanbul"+Keys.ENTER);
+
         //5_ ilce semt " sultanbeyli " yazisi gonder
-        us_03Page.ilceTextBox.sendKeys("Sultanbeyli"+Keys.ENTER);
+        aydin.ilceTextBox.click();
+        aydin.ilceTextBox.sendKeys(Keys.CLEAR);
+
+        aydin.ilceTextBox.sendKeys("Sultanbeyli"+Keys.ENTER);
         //6- posta kod "04435" gonder
-        us_03Page.postaKutusu.sendKeys("04432");
+        aydin.postaKutusu.click();
+        aydin.postaKutusu.clear();
+        aydin.postaKutusu.sendKeys("04432");
+
+
+
+
     }
 
+
+
+    @Test
+    public void test04() throws InterruptedException {
+// Tradylinn sayfasina login olma
+        //login olmali
+        LoginTest.loginTest();
+        Thread.sleep(3000);
+        // urunEkleme();
+        // sepetim butonuna tikla
+        aydin.sepetimButonu.click();
+        //sepetimi goruntuleye tikla
+        aydin.sepetiGoruntule.click();
+        //eklen urun var mi dogrula
+
+        int sepettekiSayiDegeri = Integer.parseInt(  aydin.sepetimdekiSayi.getText());
+        Assert.assertTrue(sepettekiSayiDegeri > 0, "sepetimde urun var ");
+
+        // Fiyat sekmesi var oldugunu test eder
+        Assert.assertTrue(aydin.fiyatYaziElementi.isDisplayed());
+        // Miktarsekmesi var oldugunu test eder
+        Thread.sleep(1000);
+        Assert.assertTrue(aydin.miktarYaziElementi.isDisplayed());
+        //  Ara Toplam sekmesi var oldugunu test eder
+        Thread.sleep(1000);
+        Assert.assertTrue(aydin.araToplamYaziElementi.isDisplayed());
+
+
+
+        //TC 002
+        //1.Urun adedini artirmak icin ( + ) butonuna tiklar
+        int artiButonunaTiklamadanOncekiDeger = Integer.parseInt(aydin.sepettekiUrunMiktariElementi.getAttribute("value"));
+        aydin.miktarPlus.click();
+        //2.Urun adedinin arttigini test eder
+        int artiButonuTiklandiktanSonrakiDeger = Integer.parseInt(aydin.sepettekiUrunMiktariElementi.getAttribute("value"));
+        Assert.assertTrue(artiButonuTiklandiktanSonrakiDeger > artiButonunaTiklamadanOncekiDeger, "Urun artmadi");
+        //3.Urun adedini azaltmak icin ( - ) butonuna tiklar
+        aydin.miktarMinus.click();
+        //4. Urun adedinin azaldini  test eder
+        int eksiButonunaTikladiktanSonrakiDeger = Integer.parseInt(aydin.sepettekiUrunMiktariElementi.getAttribute("value"));
+        Assert.assertTrue(eksiButonunaTikladiktanSonrakiDeger < artiButonuTiklandiktanSonrakiDeger, "Urun azalmadi");
+
+
+
+        //  TC 003
+
+        aydin.miktarPlus.click();
+
+        // sepeti yenileye tikla
+
+        int yenilemedenOnce=Integer.parseInt(aydin.sepettekiUrunMiktariElementi.getAttribute("value"));
+        System.out.println(yenilemedenOnce);
+        JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);",aydin.sepetiYenile);
+        js.executeScript("arguments[0].click()",aydin.sepetiYenile);
+
+
+        // ara toplamin arttigini dogrula
+        int yenilemedenSonraki= Integer.parseInt(aydin.sepettekiUrunMiktariElementi.getAttribute("value"));
+        Assert.assertFalse(yenilemedenOnce<yenilemedenSonraki,"Urun toplami artmiyor");
+        // miktardaki artiya stok fazlasi deger gir
+        //ayakkabiururnunun max degeri =45
+        //  actions.sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).sendKeys(Keys.ARROW_UP).perform();
+        Thread.sleep(5000);
+        JavascriptExecutor js1=(JavascriptExecutor) Driver.getDriver();
+        js1.executeScript("arguments[0].scrollIntoView(true);",aydin.miktarPlus);
+        js1.executeScript("arguments[0].click()",aydin.miktarPlus);
+        Thread.sleep(5000);
+
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+        aydin.miktarPlus.click();
+
+        JavascriptExecutor js2=(JavascriptExecutor) Driver.getDriver();
+        js2.executeScript("arguments[0].scrollIntoView(true);",aydin.sepetiYenile);
+        js2.executeScript("arguments[0].click()",aydin.sepetiYenile);
+
+        //miktarin artmadigini stoktan buyuk sayi girilemedigini dogrula
+        aydin.sepetimButonu.click();
+        Assert.assertTrue(aydin.miktarText.getText().equals("9"));
+
+        // tc 004
+
+//        1_ kupon kullan butonunu dogrula
+        Assert.assertTrue(aydin.kuponElementi.isDisplayed());
+//        2- Alis verise devam et sekmesininin dogrula
+        Assert.assertTrue(aydin.alisveriseDevamEtButonu.isDisplayed());
+//        3_ganderim hedegi varmi onu dogrula
+        Assert.assertTrue(aydin.gonderimHedefi.isDisplayed());
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+//        4- toplam rakam varmi onu dogrula
+        Assert.assertTrue(aydin.araToplamYaziElementi.isDisplayed());
+//        5_odeme sayfasina tiklanmali ve bunu dogrula
+        Assert.assertTrue(aydin.odeme.isDisplayed());
+        actions.sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).perform();
+
+//        6-Temizle sekmesine tikla
+
+        aydin.temizle.click();
+        //7- sepetiniz suan bos yazisini dogrula
+        int sepettekiUrunSayisiTemizledenSonra = Integer.parseInt(  aydin.sepetimdekiSayi.getText());
+        Assert.assertEquals(sepettekiUrunSayisiTemizledenSonra==0, "sepetimde urun var ");
+
+
+    }
+
+    @Test
+    public void test19() throws InterruptedException {
+
+        //TC01
+        //1- login olmali
+        LoginTest.loginTest();
+        //2-hesabima tikla
+        aydin.hesabimButton.click();
+        //3-story manager tikla
+        aydin.storeManagerButton.click();
+        //4- takipciler tikla
+
+        //   JavascriptExecutor js=(JavascriptExecutor)driver;
+        // WebElement takipci=driver.findElement(By.xpath("(//span[@class='text'])[11]"));
+        //  js.executeScript("arguments[0].scrollIntoView();",element);//elementi buldu
+
+        actions
+                .sendKeys(Keys.PAGE_DOWN)
+                .sendKeys(Keys.ARROW_DOWN)
+                .sendKeys(Keys.ARROW_DOWN)
+                .perform();
+        Thread.sleep(3000);
+
+        aydin.takipcilerButton.click();
+
+        actions
+                .sendKeys(Keys.PAGE_DOWN)
+                .perform();
+
+        //5- follover list yazisini dogrula
+
+        Assert.assertTrue(aydin.followersYaziElementi.isDisplayed());
+        //6- name yazisini dogrula
+        Assert.assertTrue(aydin.nameYaziElementi.isDisplayed());
+
+        //7- e posta yazisini dogrula
+        Assert.assertTrue(aydin.e_postaYaziElementi.isDisplayed());
+
+
+        //TC02 islemler tanimlanmali
+
+        //1- islem yazi elementini dogrula
+        Assert.assertTrue(aydin.islemYaziElementi.isDisplayed());
+
+        //2- islemin altindaki  "delete" dogrula
+        //  Assert.assertTrue(aydin.deleteElementi.isDisplayed());
+        //3- Delete tikla
+        Thread.sleep(1000);
+        aydin.deleteElementi.click();
+        //4-Cikan Alert cancel tikla
+        driver.switchTo().alert().dismiss();
+
+        //5-alert accep yapmadan once ki deger
+        String alerOncekiDeger = (aydin.takipciSonucElementi.getAttribute("value"));
+
+        //6- Delete tikla
+        aydin.deleteElementi.click();
+        //7-Cikan alert yazisini "Ok" tikla
+        //driver.switchTo().alert().accept();
+//8 Degisimi dogrula
+        String alerSonrakikiDeger = (aydin.takipciSonucElementi.getAttribute("value"));
+        Assert.assertTrue(alerOncekiDeger!=alerSonrakikiDeger);
+
+
+
+
+    }
 
 
 

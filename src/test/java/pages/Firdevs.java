@@ -25,6 +25,18 @@ public class Firdevs {
     public WebElement hesabimButton;
     @FindBy(xpath = "(//*[text()='Hesabım'])[1]")
     public WebElement hesabimYazisi;
+
+
+
+    // TC2
+
+
+    // @FindBy(xpath="//li[@class='menu-item menu-item-type-post_type menu-item-object-page menu-item-1074']")
+    // public WebElement hesabimButton;
+
+
+
+
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[1]")
     public WebElement siparislerKutusu;
     @FindBy(xpath = "(//p[@class='text-uppercase text-center mb-0'])[2]")
@@ -85,4 +97,6 @@ public class Firdevs {
     public WebElement rate;
     @FindBy(xpath = "//th[@aria-label='Dated']")
     public WebElement date;
+
+
 }

@@ -49,9 +49,11 @@ public class Esra {
     @FindBy(xpath = "//input[@id='free_shipping']")
     public WebElement freeShippingCheckbox;
 
+    @FindBy(id= "wcfm_coupon_manager_submit_button")
+    public WebElement submitButton;
+
     @FindBy (xpath = "//*[text()='Coupon Successfully Published.']")
     public WebElement submitOnayYazisi;
-
 
     //=======================US_14===================================//
 
@@ -64,16 +66,18 @@ public class Esra {
     @FindBy(xpath = "//input[@id='individual_use']")
     public WebElement individual_useCheckbox;
 
-    @FindBy(xpath = "//span[@aria-expanded='true']//input[@placeholder='Filter by product ...']")
+    @FindBy(xpath = "//input[@id='exclude_sale_items']")
     public WebElement excludeSaleItems;
 
-    @FindBy(xpath = "//input[@placeholder='No categories']")
+    @FindBy(id = "exclude_product_categories")
     public WebElement excludeCategories;
 
+    @FindBy(xpath = "//span[@class='select2 select2-container select2-container--default select2-container--above select2-container--focus']")
+    public WebElement excategoriesddm;
 
     //=========================US_15====================================//
 
-    @FindBy(xpath = "//div[@id='coupons_manage_limit']")
+    @FindBy(xpath = "//label[@class='wcfmfa fa-user-times']")
     public WebElement limitlemeButon;
 
     @FindBy(xpath = "//input[@id='usage_limit']")
@@ -85,10 +89,33 @@ public class Esra {
     @FindBy(xpath = "//input[@id='usage_limit_per_user']")
     public WebElement limitPerUser;
 
+    @FindBy(xpath = "//input[@id='wcfm_coupon_manager_submit_button']")
+    public WebElement limitSubmitButton;
+
+    //==========================US_08=====================================//
+
+    @FindBy(xpath = "//span[normalize-space()='Ürün:% s']")
+    public WebElement urunButon;
+
+    @FindBy(xpath = "//span[@class='wcfmfa fa-database']")
+    public WebElement stockManager;
+
+    @FindBy(xpath = "//input[@name='stock_manage[11550][stock_qty]']")
+    public WebElement stockMiktar;
+
+    @FindBy(xpath = "//select[@name='stock_manage[11550][backorder]']")
+    public WebElement backorders;
+
+    @FindBy(xpath = "//*[@value='notify'] ")
+    public WebElement geciciBackorder;
+
+    @FindBy(id = "wcfm_stock_manager_submit_button")
+    public WebElement stockManagerSubmitButton;
 
 
 
 
+    
 
 
 }

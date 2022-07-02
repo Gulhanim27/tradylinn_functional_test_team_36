@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class Metin {
@@ -23,7 +24,7 @@ public class Metin {
     @FindBy(id = "password")
     public WebElement password;
 
-    @FindBy(xpath = "//*[@name='login']")
+    @FindBy(xpath = "//button[@name='login']")
     public WebElement girisYapButonu;
 
     @FindBy(xpath = "//*[text()='Store Manager']")
@@ -49,5 +50,6 @@ public class Metin {
 
     @FindBy(id = "attributes_is_active_2")
     public WebElement sizeSelectAll;
+
 
 }

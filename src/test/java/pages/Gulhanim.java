@@ -14,16 +14,16 @@ public class Gulhanim {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath="//span[contains(text(),'Giriş Yap')]")
+    @FindBy(xpath="//a[@class='login inline-type']")
     public WebElement girisYap;
 
-    @FindBy(xpath = "//input[@id='username']")
-    public WebElement mailTextBox;
+  @FindBy(xpath = "//input[@id='username']")
+  public WebElement mailTextBox;
 
     @FindBy(xpath = "//input[@id='password']")
-    public WebElement passwordTextBox;
+   public WebElement passwordTextBox;
 
-    @FindBy(xpath = "//button[@name='login']")
+   @FindBy(xpath = "//button[@name='login']")
     public WebElement girisYapButon;
 
     @FindBy(xpath="(//*[text()='Hesabım'])[1]")
@@ -47,6 +47,28 @@ public class Gulhanim {
     public WebElement addCustomerButonu;
     @FindBy(xpath="//input[@id='user_name']")
     public WebElement userNameButonu;
+    @FindBy(xpath="//input[@id='same_as_billing']")
+    public WebElement checkboxButonu;
+    @FindBy(xpath="//input[@id='wcfm_customer_submit_button']")
+    public WebElement submitButonu;
+    @FindBy(xpath="//input[@id='sfirst_name']")
+    public WebElement firstName3;
+    @FindBy(xpath="//input[@id='bfirst_name']")
+    public WebElement firstName2;
+
+
+
+    @FindBy(xpath="//span[@id='select2-bcountry-container']")
+    public WebElement countryButonu;
+    @FindBy(xpath="(//*[contains(text(),'Türkiye')])[3]")
+    public WebElement country;
+
+    @FindBy(xpath="//input[@id='bzip']")
+    public WebElement postCode;
+    @FindBy(xpath="//input[@id='bcity']")
+    public WebElement cityButonu;
+    @FindBy(xpath="//select[@id='bstate']")
+    public WebElement statebutonu;
 
 
 

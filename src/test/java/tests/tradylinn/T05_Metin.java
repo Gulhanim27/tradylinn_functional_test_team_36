@@ -1,6 +1,8 @@
 package tests.tradylinn;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,6 +10,8 @@ import pages.Metin;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBase;
+
+import java.util.List;
 
 public class T05_Metin extends TestBase {
     @Test
@@ -27,26 +31,31 @@ public class T05_Metin extends TestBase {
             //4-Kullanici gecerli password girer
             metinSayfasi.password.sendKeys(ConfigReader.getProperty("password"));
             //5-Kullanici giris yap butonunu tiklar
-            actions.sendKeys(Keys.PAGE_DOWN);
-            Thread.sleep(2000);
-            metinSayfasi.girisYapButonu.click();
+            actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+            actions.click(metinSayfasi.girisYapButonu);
             Thread.sleep(3000);
-
         //Kullanici store manager butonunu tiklar
-        metinSayfasi.storeManager.click();
+            actions.click(metinSayfasi.storeManager);
         //Kullanici urun butonunu tiklar
-        metinSayfasi.urunButonu.click();
+            actions.click(metinSayfasi.urunButonu);
         //Kullanici yeni ekle butonunu tiklar
-        metinSayfasi.yeniEkleButonu.click();
+            actions.click(metinSayfasi.yeniEkleButonu);
+
         //Kullanici sayfanin altindaki Attributes butonunu tiklar
         actions.sendKeys(Keys.PAGE_DOWN);
-        metinSayfasi.attributesButonu.click();
+        actions.click(metinSayfasi.attributesButonu);
         //Kullanici color check box ini tiklar
-        metinSayfasi.colorCheckBox.click();
+        actions.click(metinSayfasi.colorCheckBox);
         //Kullanici SELECT ALL butonunu tiklar
-        metinSayfasi.colorSelectAll.click();
+        actions.click( metinSayfasi.colorSelectAll);
         //Kullanici renkleri assert eder
-      //  Assert.assertEquals();
+   List<WebElement> liste = Driver.getDriver().findElements(By.xpath("//*[@class='select2-selection__choice']"));
+    for (WebElement list : liste) {
+        Assert.assertTrue(list.isDisplayed());
+    }
+
+
+
 
 
 

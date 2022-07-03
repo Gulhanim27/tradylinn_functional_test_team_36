@@ -42,16 +42,16 @@ public class Metin {
     @FindBy(id = "wcfm_products_manage_form_attribute_head")
     public WebElement attributesButonu;
 
-    @FindBy(xpath = "//div[@id='attributes']/div[2]")
+    @FindBy(id = "attributes_is_active_1")
     public WebElement colorCheckBox;
 
-    @FindBy(id = "attributes_is_active_1")
+    @FindBy(xpath = "(//*[text()='Select all'])[1]")
     public WebElement colorSelectAll;
 
-    @FindBy(xpath = "//div[@id='attributes']/div[3]")
+    @FindBy(id = "attributes_is_active_2")
     public WebElement sizeCheckBox;
 
-    @FindBy(id = "attributes_is_active_2")
+    @FindBy(xpath = "(//*[text()='Select all'])[2]")
     public WebElement sizeSelectAll;
 
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ import utilities.Driver;
 import utilities.TestBase;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class T05_Metin extends TestBase {
@@ -62,9 +64,12 @@ public class T05_Metin extends TestBase {
         wait.until(ExpectedConditions.elementToBeClickable(metinSayfasi.colorSelectAll));
         metinSayfasi.colorSelectAll.click();
         //Kullanici renkleri assert eder
-   List<WebElement> liste = Driver.getDriver().findElements(By.xpath("//li[@class='select2-selection__choice']"));
-    for (WebElement list : liste) {
-        System.out.print(list.getText());
+        List<WebElement> colors = Driver.getDriver().findElements(By.xpath("//li[@class='select2-selection__choice']"));
+        //Select select2 = new Select();
+   List<WebElement> liste = new ArrayList<>();
+    for (WebElement each : colors) {
+        each.click();
+
     }
 
 
